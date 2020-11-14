@@ -8,7 +8,7 @@ public class Selenium1 {
 
     public static void main(String[] args) throws InterruptedException {
         //set up data ase chrome driver needs
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
         // create object for chrome driver
         WebDriver driver = new ChromeDriver();
