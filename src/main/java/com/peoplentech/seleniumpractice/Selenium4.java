@@ -1,6 +1,7 @@
 package com.peoplentech.seleniumpractice;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -78,9 +79,67 @@ public class Selenium4 extends TestBase {
         closeDriver();
     }
 
-    // class work
+    // class work on firefox
     // perform mouse hover to sporting goods --> click on golf
     // navigate back
     // mouse hover to toys --> click on action figures
+
+
+
+    @Test
+    public void validateScroll(){
+        setupDriver("chrome");
+        navigateToURL("https://www.ebay.com");
+        sleepFor(2);
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,1000)");
+
+        sleepFor(5);
+        closeDriver();
+    }
+
+    @Test
+    public void validateScrollToElement(){
+        setupDriver("chrome");
+        navigateToURL("https://www.ebay.com");
+        sleepFor(2);
+
+        WebElement element = driver.findElement(By.linkText("Announcements"));
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);",element);
+
+        sleepFor(5);
+        closeDriver();
+    }
+
+
+
+    @Test
+    public void validatePopup(){
+        setupDriver("chrome");
+        navigateToURL("http://demo.guru99.com/test/delete_customer.php");
+        sleepFor(2);
+
+        driver.findElement(By.xpath("//input[@name=\"cusid\"]")).sendKeys("1");
+        driver.findElement(By.xpath("//input[@name=\"submit\"]")).click();
+
+
+        String popup1 = driver.switchTo().alert().getText();
+        System.out.println(popup1);
+
+        driver.switchTo().alert().dismiss();
+
+        /*sleepFor(2);
+        String popup2 = driver.switchTo().alert().getText();
+        System.out.println(popup2);
+
+        driver.switchTo().alert().accept();*/
+
+        sleepFor(5);
+        closeDriver();
+    }
+
 
 }
