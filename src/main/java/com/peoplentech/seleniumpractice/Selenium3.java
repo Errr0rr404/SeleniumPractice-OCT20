@@ -11,7 +11,7 @@ public class Selenium3 extends TestBase {
 
     @Test
     public static void validateUserCanTypeOnSearchBar() {
-        setupDriver();
+        setupDriver("chrome");
         navigateToURL("https://www.ebay.com");
 
         driver.findElement(By.id("gh-ac")).sendKeys("Java Books");
@@ -24,7 +24,7 @@ public class Selenium3 extends TestBase {
 
     @Test
     public static void validateUserCanTypeOnSearchBarAndClickSearchButton() {
-        setupDriver();
+        setupDriver("chrome");
         navigateToURL("https://www.ebay.com");
 
         driver.findElement(By.id("gh-ac")).sendKeys("Java Books");
@@ -39,7 +39,7 @@ public class Selenium3 extends TestBase {
 
     @Test
     public static void validateProductDropDown() {
-        setupDriver();
+        setupDriver("chrome");
         navigateToURL("https://www.ebay.com");
 
         // print the data directly
@@ -59,7 +59,7 @@ public class Selenium3 extends TestBase {
 
     @Test
     public static void validateUserCanTypeOnSearchBarAndChooseFromDropDown() {
-        setupDriver();
+        setupDriver("chrome");
         navigateToURL("https://www.ebay.com");
 
 
@@ -84,7 +84,7 @@ public class Selenium3 extends TestBase {
 
     @Test
     public static void seleniumMethods() {
-        setupDriver();
+        setupDriver("chrome");
         navigateToURL("https://www.ebay.com");
 
         WebElement clickElement = driver.findElement(By.xpath("//input[@id='gh-btn']"));
