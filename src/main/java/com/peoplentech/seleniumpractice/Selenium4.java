@@ -1,5 +1,6 @@
 package com.peoplentech.seleniumpractice;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class Selenium4 extends TestBase {
+
+    private static Logger LOGGER = Logger.getLogger(Selenium4.class);
 
     @Test
     public void validateDragAndDrop() {
@@ -85,9 +88,8 @@ public class Selenium4 extends TestBase {
     // mouse hover to toys --> click on action figures
 
 
-
     @Test
-    public void validateScroll(){
+    public void validateScroll() {
         setupDriver("chrome");
         navigateToURL("https://www.ebay.com");
         sleepFor(2);
@@ -100,7 +102,7 @@ public class Selenium4 extends TestBase {
     }
 
     @Test
-    public void validateScrollToElement(){
+    public void validateScrollToElement() {
         setupDriver("chrome");
         navigateToURL("https://www.ebay.com");
         sleepFor(2);
@@ -108,16 +110,15 @@ public class Selenium4 extends TestBase {
         WebElement element = driver.findElement(By.linkText("Announcements"));
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);",element);
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
 
         sleepFor(5);
         closeDriver();
     }
 
 
-
     @Test
-    public void validatePopup(){
+    public void validatePopup() {
         setupDriver("chrome");
         navigateToURL("http://demo.guru99.com/test/delete_customer.php");
         sleepFor(2);
@@ -127,15 +128,15 @@ public class Selenium4 extends TestBase {
 
 
         String popup1 = driver.switchTo().alert().getText();
-        System.out.println(popup1);
+        LOGGER.info(popup1);
 
-        driver.switchTo().alert().dismiss();
+        driver.switchTo().alert().accept();
 
-        /*sleepFor(2);
+        sleepFor(2);
         String popup2 = driver.switchTo().alert().getText();
-        System.out.println(popup2);
+        LOGGER.info(popup2);
 
-        driver.switchTo().alert().accept();*/
+        driver.switchTo().alert().accept();
 
         sleepFor(5);
         closeDriver();
